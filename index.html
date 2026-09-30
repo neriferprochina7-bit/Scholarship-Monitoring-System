@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scholarship Monitoring System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOGIN PAGE -->
+    <div id="loginPage" class="login-page">
+
+        <div class="login-card">
+
+            <div class="login-icon">
+                🎓
+            </div>
+
+            <h1>Scholarship Monitoring</h1>
+
+            <p class="login-subtitle">
+                Student Scholarship Monitoring and Academic Compliance System
+            </p>
+
+            <div class="input-group">
+                <label>Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                >
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                >
+            </div>
+
+            <button id="loginBtn" class="login-btn">
+                Sign In
+            </button>
+
+            <p id="loginMessage" class="message"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- APPLICATION -->
+    <div id="appPage" class="hidden">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">🎓</div>
+
+                <div>
+                    <h2>Scholarship</h2>
+                    <span>Monitoring System</span>
+                </div>
+            </div>
+
+            <nav>
+
+                <button class="nav-item active" data-section="dashboardSection">
+                    🏠 Dashboard
+                </button>
+
+                <button class="nav-item" data-section="scholarsSection">
+                    👨‍🎓 Scholars
+                </button>
+
+                <button class="nav-item" data-section="programsSection">
+                    🎓 Scholarships
+                </button>
+
+                <button class="nav-item" data-section="gradesSection">
+                    📚 Grade Submissions
+                </button>
+
+            </nav>
+
+            <button id="logoutBtn" class="logout-btn">
+                🚪 Logout
+            </button>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <p class="small-title">
+                        Scholarship Management
+                    </p>
+
+                    <h1 id="pageTitle">
+                        Dashboard
+                    </h1>
+                </div>
+
+                <div class="user-info">
+                    <div class="user-avatar">
+                        👤
+                    </div>
+
+                    <div>
+                        <strong id="welcomeName">
+                            User
+                        </strong>
+
+                        <span id="userRole">
+                            Role
+                        </span>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+            <section id="dashboardSection" class="content-section">
+
+                <div class="welcome-banner">
+
+                    <div>
+                        <p>Welcome back!</p>
+
+                        <h2 id="dashboardWelcome">
+                            Scholarship Monitoring Dashboard
+                        </h2>
+
+                        <span>
+                            Monitor scholars, grades, and academic compliance.
+                        </span>
+                    </div>
+
+                    <div class="banner-icon">
+                        🎓
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon blue">👨‍🎓</div>
+
+                        <div>
+                            <span>Total Scholars</span>
+                            <strong id="totalScholars">0</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">⏳</div>
+
+                        <div>
+                            <span>Pending Submissions</span>
+                            <strong id="pendingSubmissions">0</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">✓</div>
+
+                        <div>
+                            <span>Verified Submissions</span>
+                            <strong id="verifiedSubmissions">0</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">✓</div>
+
+                        <div>
+                            <span>Compliant Scholars</span>
+                            <strong id="compliantScholars">0</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon red">!</div>
+
+                        <div>
+                            <span>With Deficiency</span>
+                            <strong id="deficiencyScholars">0</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="section-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Scholarship Programs</h2>
+                            <p>
+                                Active scholarship requirements
+                            </p>
+                        </div>
+
+                        <button
+                            class="small-btn"
+                            onclick="showSection('programsSection')"
+                        >
+                            View All
+                        </button>
+
+                    </div>
+
+                    <div id="dashboardPrograms" class="program-grid">
+                        <p class="loading">
+                            Loading scholarship programs...
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SCHOLARS -->
+            <section
+                id="scholarsSection"
+                class="content-section hidden"
+            >
+
+                <div class="section-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Scholar Records</h2>
+                            <p>
+                                Registered scholarship recipients
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Program</th>
+                                    <th>Year</th>
+                                    <th>Scholarship</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="scholarsTable">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SCHOLARSHIP PROGRAMS -->
+            <section
+                id="programsSection"
+                class="content-section hidden"
+            >
+
+                <div class="section-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Scholarship Programs</h2>
+                            <p>
+                                Scholarship requirements configured in Supabase
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div id="programsList" class="program-grid">
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- GRADES -->
+            <section
+                id="gradesSection"
+                class="content-section hidden"
+            >
+
+                <div class="section-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Grade Submissions</h2>
+                            <p>
+                                Semester academic submissions
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Scholar</th>
+                                    <th>Academic Year</th>
+                                    <th>Semester</th>
+                                    <th>GWA</th>
+                                    <th>Units</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="gradesTable">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- APP -->
+    <script src="app.js"></script>
+
+</body>
+</html>
